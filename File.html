@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Using babylon.js - How to load a scene</title>
+        <script src="https://www.babylonjs.com/babylon.js"></script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+        }
+#ammoLabel { 
+position:absolute;
+ top:20px; 
+left : 20px; 
+color:green; 
+font-size: 2em; 
+} 
+    </style>
+</head>
+<body>
+<div id="ammoLabel">AMMO : 3</div>
+    <canvas id="renderCanvas"></canvas>
+ </body>
+</html>
+This page is pretty simple because all you need is just a canvas and a reference to babylon.js.
+
+Then you will have to use BABYLON.SceneLoader object to load your scene. To do so, just add this script block right after the canvas:
+
+<script>
+    if (BABYLON.Engine.isSupported()) {
+        var canvas = document.getElementById("renderCanvas");
+        var engine = new BABYLON.Engine(canvas, true);
+
+        BABYLON.SceneLoader.Load("https://gitcdn.xyz/repo/BabylonJS/Website/master/Scenes/Sponza/", "Sponza.babylon", engine, function (newScene) {
+            // Wait for textures and shaders to be ready
+            newScene.executeWhenReady(function () {
+
+                // Attach camera to canvas inputs
+                newScene.activeCamera.attachControl(canvas);
+
+                // Once the scene is loaded, just register a render loop to render it
+                engine.runRenderLoop(function() {
+                    newScene.render();
+                });
+            });
+        }, function (progress) {
+            // To do: give progress feedback to user
+        });
+
+    }
+</script>
+ </body>
+</html>
