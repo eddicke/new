@@ -7,7 +7,7 @@
    <div id = "ionic">Ionic bond: NaCl</div>
   <div id = "time"> FM </div>
   <div id = "task"></div>
-  <p>Drag the three big red balls according to their labels to form the appropriate bond,star = Cl ion, white ball = NO³ ion, small red ball = H ion </p>
+  <p>Drag the three big red balls according to their labels to form the appropriate bond,star = Cl⁻ ion, white ball = Na⁺ ion, small blue ball = H ion </p>
   <style>
     #wrd{
       position: fixed;
@@ -283,7 +283,9 @@ enemy2.ty = apple.y + 2;
             for(var i = 0, len = hits.length; i < len; i++){
               // game.rootScene.removeChild(hits[i][0]);
                 game.rootScene.removeChild(hits[i][1]);
- apple2.frame = 20
+  apple2.scaleX += 0.05
+ apple2.scaleY += 0.05
+
               score += 2;
                var x = 'Na';
  var y = 'Cl';                        
@@ -301,7 +303,10 @@ enemy2.ty = apple.y + 2;
             for(var i = 0, len = hits.length; i < len; i++){
               
  game.rootScene.removeChild(hits[i][1]);
- apple.frame = 20
+// apple.frame = 20
+               apple.scaleX += 0.05
+ apple.scaleY += 0.05
+
  var x = 'sodium(Na)';
  //var y = 'NO';                        
  var resultX = x.sup();
@@ -317,8 +322,10 @@ formulae.innerHTML = "Metallic bond: "+score+resultX
             var hits = apple3.intersect(Enemy3);
             for(var i = 0, len = hits.length; i < len; i++){
               
- apple3.frame = 20
- var x = 'C';
+ apple3.scaleX += 0.05
+ apple3.scaleY += 0.05
+
+              var x = 'C';
  var y = 'H';                        
  var resultX = x.sup();
  var resultY = y.sup();             
